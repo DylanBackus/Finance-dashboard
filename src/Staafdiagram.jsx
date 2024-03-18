@@ -1,6 +1,14 @@
+import React, { useEffect } from 'react';
+import startClock from './clock';
 
-const Staafdiagram = ({ }) => {
+const Staafdiagram = () => {
+    useEffect(() => {
+        const intervalId = startClock();
 
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, []);
 
     return (
         <div className="container">
@@ -31,16 +39,19 @@ const Staafdiagram = ({ }) => {
             </div>
             <div className="promo-onder">
                 <div className="cashflow-text-container">
-                    <img className="mijn-logo" src="./media/Garfield PFP.jpg"></img>
+                    <img className="mijn-logo" src="./media/Garfield PFP.jpg" alt="Logo"></img>
                     <h1 className="cashflow-text-promo">Cashflow Dashboard</h1>
                     <h1 className="powered-by-text-promo">Powered by </h1>
                     <a href="https://dylanbackus.github.io/" className="dylan-backus-text-promo">Dylan Backus</a>
                 </div>
                 <div className="klok-bottom-container">
-                    <h1 className="klok-bottom">11:36</h1>
+                    <div id="clock">
+                        <h1 id="date-time" className="klok-bottom">14:54</h1>
+                    </div>
                 </div>
             </div>
         </div>
-    )
-}
-export default Staafdiagram
+    );
+};
+
+export default Staafdiagram;
