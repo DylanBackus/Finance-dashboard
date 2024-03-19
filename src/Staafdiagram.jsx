@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import startClock from './clock';
+import axios, {isCancel, AxiosError} from 'axios';
 
 const Staafdiagram = () => {
     useEffect(() => {
@@ -46,7 +47,7 @@ const Staafdiagram = () => {
                 </div>
                 <div className="klok-bottom-container">
                     <div id="clock">
-                        <h1 id="date-time" className="klok-bottom">14:54</h1>
+                        <h1 id="date-time" className="klok-bottom"></h1>
                     </div>
                 </div>
             </div>

@@ -82,7 +82,7 @@ button:focus-visible {
   display: flex;
 }
 
-.blokken-main-text{
+.blokken-main-text {
   font-weight: 600;
   margin-left: 12px;
   font-size: 18px;
@@ -109,21 +109,23 @@ button:focus-visible {
   width: 32%;
   height: 95%;
 }
+
 .blok2-top {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 10px;
+  margin-top: 5px;
   background-color: #272953;
   border-radius: 15px;
   width: 32%;
   height: 95%;
 }
+
 .blok3-top {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-right: 5px;
   background-color: #272953;
   border-radius: 15px;
@@ -196,7 +198,8 @@ button:focus-visible {
   height: 9%;
 }
 
-.mijn-logo{
+.mijn-logo {
+  position: relative;
   margin-top: 5px;
   margin-left: 13px;
   border-radius: 10px;
@@ -204,7 +207,7 @@ button:focus-visible {
 }
 
 /* klok */
-.klok-bottom-container{
+.klok-bottom-container {
   margin-left: -10px;
   margin-top: -6px;
   display: flex;
@@ -212,15 +215,16 @@ button:focus-visible {
   justify-content: space-between;
   background-color: #0000;
   height: 100%;
-  width: 5.4%
+  width: 6.5%
 }
-.klok-bottom{
+
+.klok-bottom {
   font-weight: 400;
   font-size: 30px;
 }
 
 /* Promo Bottom */
-.cashflow-text-container{
+.cashflow-text-container {
   margin-left: 0px;
   margin-top: -6px;
   display: flex;
@@ -231,34 +235,35 @@ button:focus-visible {
   width: 35.5%
 }
 
-.cashflow-text-promo{
+.cashflow-text-promo {
   font-weight: 400;
   font-size: 25px;
 }
 
-.powered-by-text-promo{
+.powered-by-text-promo {
   font-weight: 100;
-  margin-top: 22px;
-  margin-left: -10px;
+  margin-top: 20px;
+  margin-left: -3px;
   font-size: 15px;
 }
 
-.dylan-backus-text-promo{
+.dylan-backus-text-promo {
   color: white;
   list-style: none;
   text-decoration: none;
   font-weight: 400;
   margin-top: 12px;
-  margin-left: -9px;
+  margin-left: -3px;
   font-size: 15px;
 }
-.dylan-backus-text-promo:hover{
+
+.dylan-backus-text-promo:hover {
   color: #b9b3e6;
   transition-duration: .6s;
   list-style: none;
   text-decoration: none;
   font-weight: 400;
   margin-top: 12px;
-  margin-left: -9px;
+  margin-left: -3px;
   font-size: 15px;
 }
