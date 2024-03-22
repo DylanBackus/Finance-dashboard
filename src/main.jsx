@@ -7,7 +7,7 @@ import Staafdiagram from './Staafdiagram.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Staafdiagram />
     <App />
+    <Staafdiagram />
   </React.StrictMode>,
 )

@@ -61,6 +61,7 @@ button:hover {
   flex-direction: column;
   justify-content: space-between;
   background-color: #060606;
+  margin-top: 3%;
   width: 1100px;
   height: 660px;
 }
@@ -283,4 +284,9 @@ button:hover {
   margin-left: 5px;
   font-size: 15px;
   font-weight: 500;
+}
+
+/* coin list */
+.coin-list-container{
+  width: 20%;
 }
