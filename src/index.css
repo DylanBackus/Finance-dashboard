@@ -12,17 +12,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
@@ -52,11 +41,6 @@ button:hover {
   border-color: #646cff;
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -76,13 +60,13 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #16113a;
+  background-color: #060606;
   width: 1100px;
   height: 660px;
-  display: flex;
 }
 
 .blokken-main-text {
+  color: #ff6800;
   font-weight: 600;
   margin-left: 12px;
   font-size: 18px;
@@ -104,7 +88,7 @@ button:focus-visible {
   align-items: flex-start;
   margin-left: 5px;
   margin-top: 5px;
-  background-color: #272953;
+  background-color: #191919;
   border-radius: 15px;
   width: 32%;
   height: 95%;
@@ -115,7 +99,7 @@ button:focus-visible {
   flex-direction: column;
   align-items: flex-start;
   margin-top: 5px;
-  background-color: #272953;
+  background-color: #191919;
   border-radius: 15px;
   width: 32%;
   height: 95%;
@@ -127,7 +111,7 @@ button:focus-visible {
   align-items: flex-start;
   margin-top: 5px;
   margin-right: 5px;
-  background-color: #272953;
+  background-color: #191919;
   border-radius: 15px;
   width: 32%;
   height: 95%;
@@ -150,7 +134,7 @@ button:focus-visible {
   flex-direction: column;
   align-items: flex-start;
   margin-left: 5px;
-  background-color: #272953; /* 272953 */
+  background-color: #191919; /* 272953 */
   border-radius: 15px;
   width: 32%;
   height: 97%;
@@ -160,7 +144,7 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: #272953;
+  background-color: #191919;
   border-radius: 15px;
   width: 17%;
   height: 97%;
@@ -170,7 +154,7 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: #272953;
+  background-color: #191919;
   border-radius: 15px;
   width: 30%;
   height: 97%;
@@ -181,7 +165,7 @@ button:focus-visible {
   flex-direction: column;
   align-items: flex-start;
   margin-right: 5px;
-  background-color: #272953;
+  background-color: #191919;
   border-radius: 15px;
   width: 16%;
   height: 97%;
@@ -196,7 +180,7 @@ button:focus-visible {
   justify-content: space-between;
   background-color: #0000;
   height: 100%;
-  width: 6.5%
+  width: 7.5%
 }
 
 .klok-bottom {
@@ -257,7 +241,7 @@ button:focus-visible {
 }
 
 .dylan-backus-text-promo:hover {
-  color: #b9b3e6;
+  color: #ff6800;
   transition-duration: .6s;
   list-style: none;
   text-decoration: none;
@@ -279,7 +263,8 @@ button:focus-visible {
 
 .cash-in-bank-dollar{
   margin-left: 10px;
-  font-size: 35px;
+  margin-top: 5px;
+  font-size: 30px;
   font-weight: 500;
 }
 .cash-in-bank-text {
@@ -294,7 +279,7 @@ button:focus-visible {
 }
 
 .cash-in-bank-current{
-  margin-top: 27.5px;
+  margin-top: 27px;
   margin-left: 5px;
   font-size: 15px;
   font-weight: 500;

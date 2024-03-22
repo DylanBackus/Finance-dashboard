@@ -3,8 +3,8 @@ import startClock from './clock';
 import axios from 'axios';
 
 const Staafdiagram = () => {
-    const [cashInBank, setCashInBank] = useState(null);
-
+    const [cashInBank, setCashInBank] = useState(null); 
+    const [bitcoinPrice, setBitcoinPrice] = useState(null);
     useEffect(() => {
         const intervalId = startClock();
 
@@ -14,11 +14,11 @@ const Staafdiagram = () => {
     }, []);
 
     useEffect(() => {
-        const exampleData = {
+        const cashInBankData = {
             cashInBank: "616.5"
         };
 
-        setCashInBank(exampleData.cashInBank);
+        setCashInBank(cashInBankData.cashInBank);
     }, []);
 
     return (
@@ -35,7 +35,13 @@ const Staafdiagram = () => {
                         </div>
                     </div>
                     <div className="blok2-top">
-                        <h1 className="blokken-main-text">Burn</h1>
+                        <h1 className="blokken-main-text">BTC Price</h1>
+                        <div className='cash-in-bank-container'>
+                            <div className="cash-in-bank-dollar">$</div>
+                            <h1 className='cash-in-bank-text'> {bitcoinPrice}</h1>
+                            <h1 className='cash-in-bank-k'>K</h1>
+                            <h1 className='cash-in-bank-current'>6 month avg</h1>
+                        </div>
                     </div>
                     <div className="blok3-top">
                         <h1 className="blokken-main-text">Expenses</h1>
