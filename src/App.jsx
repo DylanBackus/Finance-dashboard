@@ -3,8 +3,8 @@ import startClock from './clock';
 import axios from 'axios';
 
 const Staafdiagram = () => {
-  const [cashInBank, setCashInBank] = useState(null);
-  const [bitcoinPrice, setBitcoinPrice] = useState(null);
+  const [cashInBank, setCashInBank] = useState([]);
+  const [bitcoinPrice, setBitcoinPrice] = useState([]);
   useEffect(() => {
     const intervalId = startClock();
 
@@ -12,6 +12,17 @@ const Staafdiagram = () => {
       clearInterval(intervalId);
     };
   }, []);
+
+  const [coins, setCoins] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://api.coincap.io/v2/assets').then(response => {
+      setCoins(response.data.data)
+      const btc = response.data.data.find(coin => coin.id === "bitcoin")
+      setBitcoinPrice(btc)
+    });
+  },[]);
+
 
   useEffect(() => {
     const cashInBankData = {
@@ -38,7 +49,7 @@ const Staafdiagram = () => {
             <h1 className="blokken-main-text">BTC Price</h1>
             <div className='cash-in-bank-container'>
               <div className="cash-in-bank-dollar">$</div>
-              <h1 className='cash-in-bank-text'> {bitcoinPrice}</h1>
+              <h1 className='cash-in-bank-text'> {bitcoinPrice.priceUsd}</h1>
               <h1 className='cash-in-bank-k'>K</h1>
               <h1 className='cash-in-bank-current'>6 month avg</h1>
             </div>
