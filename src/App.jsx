@@ -20,6 +20,7 @@ const Staafdiagram = () => {
       setCoins(response.data.data)
       const btc = response.data.data.find(coin => coin.id === "bitcoin")
       setBitcoinPrice(btc)
+      num.toFixed(2)
     });
   },[]);
 
@@ -31,6 +32,8 @@ const Staafdiagram = () => {
 
     setCashInBank(cashInBankData.cashInBank);
   }, []);
+
+  
 
   return (
     <main>
@@ -49,7 +52,7 @@ const Staafdiagram = () => {
             <h1 className="blokken-main-text">BTC Price</h1>
             <div className='cash-in-bank-container'>
               <div className="cash-in-bank-dollar">$</div>
-              <h1 className='cash-in-bank-text'> {bitcoinPrice.priceUsd}</h1>
+              <h1 className='cash-in-bank-text'> {parseFloat(bitcoinPrice.priceUsd).toFixed(2)}</h1>
               <h1 className='cash-in-bank-k'>K</h1>
               <h1 className='cash-in-bank-current'>6 month avg</h1>
             </div>
