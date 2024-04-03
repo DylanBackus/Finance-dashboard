@@ -7,69 +7,27 @@ const Staafdiagram = () => {
   const [cashInBank, setCashInBank] = useState([]);
   const [bitcoinPrice, setBitcoinPrice] = useState([]);
 
-  const data = [
-    {
-      "name": "Page A",
-      "uv": 4000,
-      "pv": 2400,
-      "amt": 2400
-    },
-    {
-      "name": "Page B",
-      "uv": 3000,
-      "pv": 1398,
-      "amt": 2210
-    },
-    {
-      "name": "Page C",
-      "uv": 2000,
-      "pv": 9800,
-      "amt": 2290
-    },
-    {
-      "name": "Page D",
-      "uv": 2780,
-      "pv": 3908,
-      "amt": 2000
-    },
-    {
-      "name": "Page E",
-      "uv": 1890,
-      "pv": 4800,
-      "amt": 2181
-    },
-    {
-      "name": "Page F",
-      "uv": 2390,
-      "pv": 3800,
-      "amt": 2500
-    },
-    {
-      "name": "Page G",
-      "uv": 3490,
-      "pv": 4300,
-      "amt": 2100
-    },
-    
-  ]
+  const [historicalData, setHistoricalData] = useState([]);
 
   useEffect(() => {
-    const intervalId = startClock();
-
-    return () => {
-      clearInterval(intervalId);
-    };
+    axios.get('https://api.coincap.io/v2/assets/bitcoin/history?interval=d1')
+      .then(response => {
+        const data = response.data.data.slice(6).reverse();
+        setHistoricalData(data);
+      })
+      .catch(error => {
+        console.error('Error fetching historical data:', error);
+        const btc = response.data.data.find(coin => coin.id === "bitcoin")
+        setBitcoinPrice(btc)
+      });
   }, []);
 
-  const [coins, setCoins] = useState([]);
-
-  useEffect(() => {
-    axios.get('https://api.coincap.io/v2/assets').then(response => {
-      setCoins(response.data.data)
-      const btc = response.data.data.find(coin => coin.id === "bitcoin")
-      setBitcoinPrice(btc)
-    });
-  }, []);
+  const formattedData = historicalData.map((item, index) => ({
+    name: `${index + 1} Month`,
+    uv: parseFloat(item.priceUsd).toFixed(2),
+    pv: 2400,
+    amt: 2400
+  }));
 
   useEffect(() => {
     const cashInBankData = {
@@ -81,6 +39,7 @@ const Staafdiagram = () => {
 
   return (
     <main>
+      <div class="react-card"></div>
       <div className="container">
         <div className="row1">
           <div className="blok1-top">
@@ -97,10 +56,10 @@ const Staafdiagram = () => {
             <div className='cash-in-bank-container'>
               <div className="cash-in-bank-dollar">$</div>
               <h1 className='cash-in-bank-text'> {parseFloat(bitcoinPrice.priceUsd).toFixed(2)}</h1>
-              <h1 className='cash-in-bank-current'>6 month avg</h1>
+              <h1 className='cash-in-bank-current'>currect</h1>
             </div>
-            <AreaChart width={700} height={270} data={data}
-              margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>  
+            <AreaChart width={700} height={270} data={formattedData.reverse()}
+              margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
               <XAxis dataKey="name" />
               <YAxis />
               <CartesianGrid strokeDasharray="3 3" />
