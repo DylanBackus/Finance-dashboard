@@ -6,8 +6,18 @@ import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts'
 const Staafdiagram = () => {
   const [cashInBank, setCashInBank] = useState([]);
   const [bitcoinPrice, setBitcoinPrice] = useState([]);
-
   const [historicalData, setHistoricalData] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://api.coincap.io/v2/assets/bitcoin')
+      .then(response => {
+        const btc = response.data.data;
+        setBitcoinPrice(btc);
+      })
+      .catch(error => {
+        console.error('Error fetching Bitcoin price:', error);
+      });
+  }, []);
 
   useEffect(() => {
     axios.get('https://api.coincap.io/v2/assets/bitcoin/history?interval=d1')
