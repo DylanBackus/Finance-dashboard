@@ -84,6 +84,7 @@ button:hover {
   height: 64.5%;
 }
 
+/* blok1 */
 .blok1-top {
   display: flex;
   flex-direction: column;
@@ -94,6 +95,16 @@ button:hover {
   border-radius: 15px;
   width: 32%;
   height: 95%;
+}
+
+.cirkle-diagram-container{
+  margin-left: 20px;
+  margin-top: 15px;
+
+  border-radius: 7px;
+  height: 245px;
+  width: 89%;
+  background-color: #282828;
 }
 
 .blok2-top {

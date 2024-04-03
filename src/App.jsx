@@ -1,11 +1,14 @@
-import React, { useState, useEffect, PureComponent } from 'react';
-import startClock from './clock';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, PieChart, Pie, Cell } from 'recharts';
 
 const Staafdiagram = () => {
   const [cashInBank, setCashInBank] = useState([]);
   const [bitcoinPrice, setBitcoinPrice] = useState([]);
+  const [ethereumPrice, setethereumPrice] = useState ([]);
+  const [binanceCoinPrice, setbinanceCoinPrice] = useState ([]);
+  const [solanaPrice, setsolanaPrice] = useState ([]);
+  const [xrpPrice, setxrpPrice] = useState ([]);
   const [historicalData, setHistoricalData] = useState([]);
 
   useEffect(() => {
@@ -35,8 +38,6 @@ const Staafdiagram = () => {
   const formattedData = historicalData.map((item, index) => ({
     name: `${index + 1} Month`,
     uv: parseFloat(item.priceUsd).toFixed(2),
-    pv: 2400,
-    amt: 2400
   }));
 
   useEffect(() => {
@@ -47,9 +48,20 @@ const Staafdiagram = () => {
     setCashInBank(cashInBankData.cashInBank);
   }, []);
 
+  // Sample data for the pie chart
+  const pieChartData = [
+    { name: 'Bitcoin', value: parseFloat(bitcoinPrice.priceUsd) },
+    { name: 'Ethereum', value: ethereumPrice.priceUsd },
+    { name: 'Binance Coin', value: binanceCoinPrice.priceUsd },
+    { name: 'Solana', value: solanaPrice.priceUsd },
+    { name: 'XRP', value: xrpPrice.priceUsd },
+  ];
+
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
+
   return (
     <main>
-      <div class="react-card"></div>
+      <div className="react-card"></div>
       <div className="container">
         <div className="row1">
           <div className="blok1-top">
@@ -59,6 +71,29 @@ const Staafdiagram = () => {
               <h1 className='cash-in-bank-text'> {cashInBank}</h1>
               <h1 className='cash-in-bank-k'>K</h1>
               <h1 className='cash-in-bank-current'>Current</h1>
+            </div>
+            <div className="cirkle-diagram-container">
+              <PieChart width={400} height={400}>
+                <Pie
+                  data={pieChartData}
+                  cx={200}
+                  cy={200}
+                  labelLine={false}
+                  label={({ cx, cy, midAngle, innerRadius, outerRadius, value, index }) => {
+                    const RADIAN = Math.PI / 180;
+                    const radius = 25 + innerRadius + (outerRadius - innerRadius);
+                    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+                  }}
+                  outerRadius={80}
+                  fill="#8884d8"
+                  dataKey="value"
+                >
+                  {pieChartData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+              </PieChart>
             </div>
           </div>
           <div className="blok2-top">
