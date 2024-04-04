@@ -58,34 +58,41 @@ button:hover {
 }
 
 .container {
+  width: 1100px;
+  height: 660px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: #060606;
-  margin-top: 3%;
-  width: 1100px;
-  height: 660px;
 }
 
 .blokken-main-text {
+  margin-left: 12px;
+
   color: #ff6800;
   font-weight: 600;
-  margin-left: 12px;
   font-size: 18px;
 }
 
 .row1 {
+  width: 100%;
+  height: 62.5%;
+
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   background-color: #0000;
-  width: 100%;
-  height: 64.5%;
 }
 
 /* blok1 */
 .blok1-top {
+  width: 32%;
+  height: 95%;
+  margin-left: 5px;
+  margin-top: 5px;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -93,202 +100,31 @@ button:hover {
   margin-top: 5px;
   background-color: #191919;
   border-radius: 15px;
-  width: 32%;
-  height: 95%;
 }
 
-.cirkle-diagram-container{
-  margin-left: 20px;
-  margin-top: 15px;
-
-  border-radius: 7px;
-  height: 245px;
-  width: 89%;
-  background-color: #282828;
-}
-
-.blok2-top {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 5px;
-  margin-right: 8px;
-  background-color: #191919;
-  border-radius: 15px;
-  width: 64.5%;
-  height: 95%;
-}
-
-.blok3-top {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 5px;
-  margin-right: 5px;
-  background-color: #191919;
-  border-radius: 15px;
-  width: 22%;
-  height: 95%;
-}
-
-/* mid row */
-
-.row2 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #0000;
-  width: 100%;
-  height: 29.5%;
-}
-
-.blok1-row2 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 5px;
-  background-color: #191919;
-  /* 272953 */
-  border-radius: 15px;
-  width: 32%;
-  height: 97%;
-}
-
-.blok2-row2 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: #191919;
-  border-radius: 15px;
-  width: 17%;
-  height: 97%;
-}
-
-.blok3-row2 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: #191919;
-  border-radius: 15px;
-  width: 30%;
-  height: 97%;
-}
-
-.blok4-row2 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-right: 5px;
-  background-color: #191919;
-  border-radius: 15px;
-  width: 16%;
-  height: 97%;
-}
-
-/* klok */
-.klok-bottom-container {
-  margin-left: -10px;
-  margin-top: -6px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #0000;
-  height: 100%;
-  width: 7.5%
-}
-
-.klok-bottom {
-  font-weight: 400;
-  font-size: 30px;
-}
-
-/* Promo Bottom */
-.promo-onder {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-top: 7px;
-  background-color: #0000;
-  width: 100%;
-  height: 9%;
-}
-
-.mijn-logo {
-  position: relative;
-  margin-top: 5px;
-  margin-left: 13px;
-  border-radius: 10px;
-  height: 80%;
-}
-
-.cashflow-text-container {
-  margin-left: 0px;
-  margin-top: -6px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #0000;
-  height: 100%;
-  width: 42.5%
-}
-
-.cashflow-text-promo {
-  font-weight: 400;
-  font-size: 25px;
-}
-
-.powered-by-text-promo {
-  font-weight: 100;
-  margin-top: 20px;
-  margin-left: -3px;
-  font-size: 15px;
-}
-
-.dylan-backus-text-promo {
-  color: white;
-  list-style: none;
-  text-decoration: none;
-  font-weight: 400;
-  margin-top: 12px;
-  margin-left: -3px;
-  font-size: 15px;
-}
-
-.dylan-backus-text-promo:hover {
-  color: #ff6800;
-  transition-duration: .6s;
-  list-style: none;
-  text-decoration: none;
-  font-weight: 400;
-  margin-top: 12px;
-  margin-left: -3px;
-  font-size: 15px;
-}
-
-/* Test */
 .cash-in-bank-container {
-  display: flex;
-  flex-direction: row;
-  background-color: #0000;
-  margin-top: 10px;
+  margin-top: 5px;
   width: 100%;
   height: 50px;
+
+  display: flex;
+  flex-direction: row;
+  background-color: #0000;
 }
 
 .cash-in-bank-dollar {
   margin-left: 10px;
   margin-top: 5px;
+
   font-size: 30px;
   font-weight: 500;
 }
 
 .cash-in-bank-text {
   margin-top: -5px;
+
   font-weight: 600;
   font-size: 50px;
-
 }
 
 .cash-in-bank-k {
@@ -299,8 +135,280 @@ button:hover {
 .cash-in-bank-current {
   margin-top: 27px;
   margin-left: 5px;
+
   font-size: 15px;
   font-weight: 500;
+}
+
+.top5-coins {
+  margin-top: 8px;
+  font-size: 20px;
+}
+
+.circle-diagram-container {
+  margin-left: 20px;
+  height: 220px;
+  width: 89%;
+
+  border-radius: 7px;
+  background-color: #282828;
+}
+
+.circle-chart {
+  margin-top: -5px;
+  border-radius: 7px;
+  background-color: #0000;
+  opacity: 100;
+}
+
+/*blok2*/
+.blok2-top {
+  width: 64.5%;
+  height: 95%;
+  margin-top: 5px;
+  margin-right: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #191919;
+  border-radius: 15px;
+}
+
+.dropdown-en-text-container{
+  width: 100%;
+  height: 50px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #0000;
+  transition-duration: .4s;
+}
+
+.dropdown {
+  transition-duration: .4s;
+  margin-left: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-items{
+  transition-duration: .4s;
+  color: #ffffff;
+}
+.dropdown-items:hover{
+  transition-duration: .4s;
+  color: #ff6800;
+}
+
+.dropdown-content {
+  min-width: 110px;
+  height: 220px;
+
+  display: none;
+  position: absolute;
+  background-color: #282828;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  transition-duration: .4s;
+}
+
+.blok3-top {
+  width: 22%;
+  height: 95%;
+  margin-top: 5px;
+  margin-right: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #191919;
+  border-radius: 15px;
+}
+
+/* mid row */
+
+.row2 {
+  width: 100%;
+  height: 29.5%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #0000;
+}
+
+.blok1-row2 {
+  width: 32%;
+  height: 97%;
+  margin-left: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #191919;
+  border-radius: 15px;
+}
+
+.top-5-container {
+  width: 97%;
+  height: 110px;
+  margin-top: 10px;
+  margin-left: -3px;
+
+  display: flex;
+  flex-direction: row;
+  background-color: #0000;
+}
+
+.top-5-links {
+  width: 50%;
+  height: 100%;
+  
+  background-color: #0000;
+}
+
+.top-5-rechts {
+  width: 50%;
+  height: 100%;
+
+  background-color: #0000;
+}
+
+
+.top-5-valutas-text {
+  margin-left: 20px;
+  font-size: 17px;
+  font-weight: 200;
+}
+
+.blok2-row2 {
+  width: 17%;
+  height: 97%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #191919;
+  border-radius: 15px;
+}
+
+.blok3-row2 {
+  width: 30%;
+  height: 97%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #191919;
+  border-radius: 15px;
+}
+
+.blok4-row2 {
+  margin-right: 5px;
+  width: 16%;
+  height: 97%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #191919;
+  border-radius: 15px;
+}
+
+/* klok */
+.klok-bottom-container {
+  margin-left: -10px;
+  margin-top: -6px;
+  height: 100%;
+  width: 7.5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0000;
+}
+
+.klok-bottom {
+  font-weight: 400;
+  font-size: 30px;
+}
+
+/* Promo Bottom */
+.promo-onder {
+  width: 100%;
+  height: 9%;
+  margin-top: 7px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: #0000;
+}
+
+.mijn-logo {
+  margin-top: 5px;
+  margin-left: 13px;
+  height: 80%;
+
+  position: relative;
+  border-radius: 10px;
+}
+
+.cashflow-text-container {
+  margin-left: 0px;
+  margin-top: -6px;
+  height: 100%;
+  width: 42.5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0000;
+}
+
+.cashflow-text-promo {
+  font-weight: 400;
+  font-size: 25px;
+}
+
+.powered-by-text-promo {
+  margin-top: 20px;
+  margin-left: -3px;
+
+  font-weight: 100;
+  font-size: 15px;
+}
+
+.dylan-backus-text-promo {
+  margin-top: 12px;
+  margin-left: -3px;
+
+  color: white;
+  list-style: none;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.dylan-backus-text-promo:hover {
+  margin-top: 12px;
+  margin-left: -3px;
+
+  color: #ff6800;
+  transition-duration: .6s;
+  list-style: none;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 15px;
 }
 
 /* coin list*/
