@@ -10,7 +10,8 @@ const Staafdiagram = () => {
   const [binanceCoinPrice, setBinanceCoinPrice] = useState([]);
   const [solanaPrice, setSolanaPrice] = useState([]);
   const [historicalData, setHistoricalData] = useState([]);
-  const [selectedCrypto, setSelectedCrypto] = useState('Bitcoin'); // Default value is Bitcoin
+  const [selectedCrypto, setSelectedCrypto] = useState('Bitcoin');
+  const [cryptoPrice, setCryptoPrice] = useState({});
 
   const formattedData = historicalData.map((item) => ({
     time: new Date(item.time).toLocaleDateString(),
@@ -42,7 +43,7 @@ const Staafdiagram = () => {
         setEthereumPrice(response.data.data);
       })
 
-    axios.get('https://api.coincap.io/v2/assets/binance-coin')
+    axios.get('https://api.coincap.io/v2/assets/doge')
       .then(response => {
         setBinanceCoinPrice(response.data.data);
       })
@@ -50,11 +51,6 @@ const Staafdiagram = () => {
     axios.get('https://api.coincap.io/v2/assets/solana')
       .then(response => {
         setSolanaPrice(response.data.data);
-      })
-
-    axios.get('https://api.coincap.io/v2/assets/ripple')
-      .then(response => {
-        setXrpPrice(response.data.data);
       })
 
     const cashInBankData = {
@@ -75,9 +71,6 @@ const Staafdiagram = () => {
             break;
           case 'Ethereum':
             setEthereumPrice(response.data.data);
-            break;
-          case 'Binance Coin':
-            setBinanceCoinPrice(response.data.data);
             break;
           case 'Solana':
             setSolanaPrice(response.data.data);
@@ -104,6 +97,34 @@ const Staafdiagram = () => {
   const handleCryptoChange = (event) => {
     setSelectedCrypto(event.target.textContent);
   };
+
+  useEffect(() => { /* CURRENT PRIJS VAN COINS */
+    axios.get(`https://api.coincap.io/v2/assets/${selectedCrypto.toLowerCase()}/history?interval=d1`)
+      .then(response => {
+        const data = response.data.data.slice(6).reverse();
+        setHistoricalData(data);
+      });
+
+    axios.get(`https://api.coincap.io/v2/assets/${selectedCrypto.toLowerCase()}`)
+      .then(response => {
+        switch (selectedCrypto) {
+          case 'Bitcoin':
+            setCryptoPrice(response.data.data);
+            break;
+          case 'Ethereum':
+            setCryptoPrice(response.data.data);
+            break;
+          case 'Binance Coin':
+            setCryptoPrice(response.data.data);
+            break;
+          case 'Solana':
+            setCryptoPrice(response.data.data);
+            break;
+          default:
+            break;
+        }
+      });
+  }, [selectedCrypto]);
 
   return (
     <main>
@@ -148,17 +169,16 @@ const Staafdiagram = () => {
                 <div className="dropdown-content">
                   <p className="dropdown-items" onClick={handleCryptoChange}>Bitcoin</p>
                   <p className="dropdown-items" onClick={handleCryptoChange}>Ethereum</p>
-                  <p className="dropdown-items" onClick={handleCryptoChange}>Binance Coin</p>
                   <p className="dropdown-items" onClick={handleCryptoChange}>Solana</p>
                 </div>
               </div>
             </div>
             <div className='cash-in-bank-container'>
               <div className="cash-in-bank-dollar">$</div>
-              <h1 className='cash-in-bank-text'> {parseFloat(bitcoinPrice.priceUsd).toFixed(2)}</h1>
+              <h1 className='cash-in-bank-text'> {parseFloat(cryptoPrice.priceUsd).toFixed(2)}</h1>
               <h1 className='cash-in-bank-current'>current</h1>
             </div>
-            <AreaChart width={700} height={270} data={formattedData.reverse()}
+            <AreaChart className="chart-transition" width={700} height={270} data={formattedData.reverse()}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
               <XAxis dataKey="time" />
               <YAxis />
