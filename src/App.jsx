@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import startClock from './clock';
 import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, PieChart, Pie, Cell } from 'recharts';
 
 const Staafdiagram = () => {
@@ -15,6 +16,14 @@ const Staafdiagram = () => {
     time: new Date(item.time).toLocaleDateString(),
     price: parseFloat(item.priceUsd).toFixed(2),
   }));
+
+  useEffect(() => {
+    const intervalId = startClock();
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   useEffect(() => {
     axios.get('https://api.coincap.io/v2/assets/bitcoin/history?interval=d1')
@@ -85,6 +94,7 @@ const Staafdiagram = () => {
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
+                <Tooltip />
               </PieChart>
             </div>
             <div className='top-5-container'>
@@ -104,7 +114,7 @@ const Staafdiagram = () => {
             <div className='dropdown-en-text-container'>
               <h1 className="blokken-main-text">BTC Price</h1>
               <div class="dropdown">
-                <span>Other Coins</span>
+                <span className='span-dropdown'>Other Coins</span>
                 <div class="dropdown-content">
                   <p className="dropdown-items">Bitcoin</p>
                   <p className="dropdown-items">Ethereum</p>
@@ -158,7 +168,7 @@ const Staafdiagram = () => {
           </div>
           <div className="klok-bottom-container">
             <div id="clock">
-              <h1 id="date-time" className="klok-bottom"></h1>
+              <h1 id="date-time" className="klok-bottom">14:54</h1>
             </div>
           </div>
         </div>

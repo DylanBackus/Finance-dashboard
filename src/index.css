@@ -187,11 +187,25 @@ button:hover {
   transition-duration: .4s;
 }
 
+
+
 .dropdown {
   transition-duration: .4s;
   margin-left: 10px;
   position: relative;
   display: inline-block;
+}
+
+.span-dropdown{
+  transition-duration: .4s;
+  color: white;
+  cursor: grab;
+}
+
+.span-dropdown:hover{
+  transition-duration: .4s;
+  color: rgb(217, 217, 217);
+  cursor: grab;
 }
 
 .dropdown-items{
