@@ -9,8 +9,8 @@ const Staafdiagram = () => {
   const [ethereumPrice, setEthereumPrice] = useState([]);
   const [binanceCoinPrice, setBinanceCoinPrice] = useState([]);
   const [solanaPrice, setSolanaPrice] = useState([]);
-  const [xrpPrice, setXrpPrice] = useState([]);
   const [historicalData, setHistoricalData] = useState([]);
+  const [selectedCrypto, setSelectedCrypto] = useState('Bitcoin'); // Default value is Bitcoin
 
   const formattedData = historicalData.map((item) => ({
     time: new Date(item.time).toLocaleDateString(),
@@ -61,17 +61,49 @@ const Staafdiagram = () => {
       cashInBank: "616.5"
     };
     setCashInBank(cashInBankData.cashInBank);
-  }, []);
+    axios.get(`https://api.coincap.io/v2/assets/${selectedCrypto.toLowerCase()}/history?interval=d1`)
+      .then(response => {
+        const data = response.data.data.slice(6).reverse();
+        setHistoricalData(data);
+      });
+
+    axios.get(`https://api.coincap.io/v2/assets/${selectedCrypto.toLowerCase()}`)
+      .then(response => {
+        switch (selectedCrypto) {
+          case 'Bitcoin':
+            setBitcoinPrice(response.data.data);
+            break;
+          case 'Ethereum':
+            setEthereumPrice(response.data.data);
+            break;
+          case 'Binance Coin':
+            setBinanceCoinPrice(response.data.data);
+            break;
+          case 'Solana':
+            setSolanaPrice(response.data.data);
+            break;
+          default:
+            break;
+        }
+        const cashInBankData = {
+          cashInBank: "616.5"
+        };
+        setCashInBank(cashInBankData.cashInBank);
+      });
+  }, [selectedCrypto]);
 
   const pieChartData = [
     { name: 'Bitcoin', value: parseFloat(bitcoinPrice.priceUsd) },
     { name: 'Ethereum', value: parseFloat(ethereumPrice.priceUsd) },
     { name: 'Binance Coin', value: parseFloat(binanceCoinPrice.priceUsd) },
     { name: 'Solana', value: parseFloat(solanaPrice.priceUsd) },
-    { name: 'XRP', value: parseFloat(xrpPrice.priceUsd) },
   ];
 
-  const COLORS = ['#ff6800', '#9da7da', '#f0b90b', '#21b3a4', '#8884d8'];
+  const COLORS = ['#ff6800', '#9da7da', '#f0b90b', '#21b3a4'];
+
+  const handleCryptoChange = (event) => {
+    setSelectedCrypto(event.target.textContent);
+  };
 
   return (
     <main>
@@ -85,9 +117,9 @@ const Staafdiagram = () => {
                 <Pie
                   data={pieChartData}
                   cx={157.5}
-                  cy={110}
+                  cy={135}
                   labelLine={false}
-                  outerRadius={100}
+                  outerRadius={120}
                   dataKey="value"
                 >
                   {pieChartData.map((entry, index) => (
@@ -101,26 +133,23 @@ const Staafdiagram = () => {
               <div className='top-5-links'>
                 <h1 className='top-5-valutas-text'> Bitcoin: <b>${parseFloat(bitcoinPrice.priceUsd).toFixed(2)}</b></h1>
                 <h1 className='top-5-valutas-text'> Ethereum: <b>${parseFloat(ethereumPrice.priceUsd).toFixed(2)}</b></h1>
-                <h1 className='top-5-valutas-text'> Binance: <b>${parseFloat(binanceCoinPrice.priceUsd).toFixed(2)}</b></h1>
               </div>
               <div className='top-5-rechts'>
+                <h1 className='top-5-valutas-text'> Binance: <b>${parseFloat(binanceCoinPrice.priceUsd).toFixed(2)}</b></h1>
                 <h1 className='top-5-valutas-text'> Solana: <b>${parseFloat(solanaPrice.priceUsd).toFixed(2)}</b></h1>
-                <h1 className='top-5-valutas-text'> XRP: <b>${parseFloat(xrpPrice.priceUsd).toFixed(2)}</b></h1>
-                <h1 className='top-5-valutas-text'> Ethereum: <b>${parseFloat(ethereumPrice.priceUsd).toFixed(2)}</b></h1>
               </div>
             </div>
           </div>
           <div className="blok2-top">
             <div className='dropdown-en-text-container'>
               <h1 className="blokken-main-text">BTC Price</h1>
-              <div class="dropdown">
+              <div className="dropdown">
                 <span className='span-dropdown'>Other Coins</span>
-                <div class="dropdown-content">
-                  <p className="dropdown-items">Bitcoin</p>
-                  <p className="dropdown-items">Ethereum</p>
-                  <p className="dropdown-items">Binance</p>
-                  <p className="dropdown-items">Solana</p>
-                  <p className="dropdown-items">XRP</p>
+                <div className="dropdown-content">
+                  <p className="dropdown-items" onClick={handleCryptoChange}>Bitcoin</p>
+                  <p className="dropdown-items" onClick={handleCryptoChange}>Ethereum</p>
+                  <p className="dropdown-items" onClick={handleCryptoChange}>Binance Coin</p>
+                  <p className="dropdown-items" onClick={handleCryptoChange}>Solana</p>
                 </div>
               </div>
             </div>
@@ -146,7 +175,7 @@ const Staafdiagram = () => {
               <div className="cash-in-bank-dollar">$</div>
               <h1 className='cash-in-bank-text'> {cashInBank}</h1>
               <h1 className='cash-in-bank-k'>K</h1>
-              <h1 className='cash-in-bank-current'>Current</h1>
+              <h1 className='cash-in-b'></h1>
             </div>
           </div>
           <div className="blok2-row2">
@@ -176,6 +205,5 @@ const Staafdiagram = () => {
     </main>
   );
 };
-
 
 export default Staafdiagram;
