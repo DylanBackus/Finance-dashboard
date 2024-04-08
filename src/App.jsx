@@ -43,7 +43,7 @@ const Staafdiagram = () => {
         setEthereumPrice(response.data.data);
       })
 
-    axios.get('https://api.coincap.io/v2/assets/doge')
+    axios.get('https://api.coincap.io/v2/assets/binance-coin')
       .then(response => {
         setBinanceCoinPrice(response.data.data);
       })
